@@ -36,6 +36,8 @@ export const authRouter = Router();
  */
 authRouter.post('/create-session', (req: Request, res: Response) => {
   try {
+    console.log('🔍 CREATE SESSION - Request body:', JSON.stringify(req.body));
+    
     // Validate input
     const { displayName, avatarId } = validateCreateSession(req.body);
     
@@ -226,12 +228,14 @@ authRouter.post('/logout', (req: Request, res: Response) => {
 function handleError(error: unknown, res: Response): void {
   // Validation errors
   if (error instanceof ZodError) {
+    const details = error.errors.map(e => ({
+      field: e.path.join('.'),
+      message: e.message,
+    }));
+    console.error('❌ Validation failed:', JSON.stringify(details, null, 2));
     res.status(400).json({
       error: 'Validation failed',
-      details: error.errors.map(e => ({
-        field: e.path.join('.'),
-        message: e.message,
-      })),
+      details,
     });
     return;
   }
