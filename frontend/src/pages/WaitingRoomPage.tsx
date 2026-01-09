@@ -332,7 +332,7 @@ export function WaitingRoomPage() {
           )}
           
           <CircularSimonBoard
-            key={`round-${currentRound}-seq-${currentSequence.length}`}
+            key={`round-${currentRound}`}
             sequence={currentSequence}
             round={currentRound}
             isShowingSequence={isShowingSequence}
