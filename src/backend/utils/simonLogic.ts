@@ -49,7 +49,7 @@ export function initializeSimonGame(players: Player[]): SimonGameState {
     round: 1,
     playerStates,
     currentShowingIndex: 0,
-    timeoutMs: SIMON_CONSTANTS.INITIAL_TIMEOUT_MS,
+    timeoutMs: calculateTimeoutMs(SIMON_CONSTANTS.INITIAL_SEQUENCE_LENGTH), // ✅ 17 seconds for round 1!
     timeoutAt: null,        // Step 3: Set when input phase begins
     timerStartedAt: null,   // Step 3: Set when input phase begins
     scores,                 // Step 4: Player scores
