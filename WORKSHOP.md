@@ -131,51 +131,38 @@ If Cursor can't deploy, do it manually:
 
 ---
 
-### 4.3 Get Your URLs
-
-Once deployed (green checkmarks), find your URLs:
-
-| Service | Where to find URL |
-|---------|-------------------|
-| **Backend** | Click `simon-game-backend` → URL at top |
-| **Frontend** | Click `simon-game-frontend` → URL at top |
-
-📝 **Copy both URLs!**
-
----
-
-### 4.4 Configure Environment Variables
+### 4.3 Configure Environment Variables
 
 **In Cursor chat, ask:**
 
-> "Configure the environment variables for my Render services. Set FRONTEND_URL on the backend to [YOUR_FRONTEND_URL] and set VITE_API_URL and VITE_SOCKET_URL on the frontend to [YOUR_BACKEND_URL]"
+> "Get my Render services URLs and configure the environment variables: set FRONTEND_URL on simon-game-backend to the frontend URL, and set VITE_API_URL and VITE_SOCKET_URL on simon-game-frontend to the backend URL"
 
-Replace `[YOUR_FRONTEND_URL]` and `[YOUR_BACKEND_URL]` with your actual URLs from step 4.3.
+Cursor will:
+1. ✅ Find your services on Render
+2. ✅ Get the URLs automatically
+3. ✅ Configure all environment variables
+4. ✅ Trigger a redeploy
 
-Cursor will update both services automatically.
-
-⏳ Wait for redeploy (green checkmark in Render dashboard).
+⏳ Wait for redeploy to complete (1-2 minutes).
 
 ---
 
-### 4.4 Alternative: Configure Manually
+### 4.3 Alternative: Configure Manually
 
 If Cursor can't configure, do it manually:
 
-**Backend Service:**
-1. Go to Render dashboard → **simon-game-backend** → **Environment**
-2. Set `FRONTEND_URL` = your frontend URL
-3. Click **Save Changes**
-
-**Frontend Service:**
-1. Go to Render dashboard → **simon-game-frontend** → **Environment**
-2. Set `VITE_API_URL` = your backend URL
-3. Set `VITE_SOCKET_URL` = your backend URL
-4. Click **Save Changes**
+1. Go to [dashboard.render.com](https://dashboard.render.com)
+2. Click **simon-game-backend** → **Environment**
+   - Set `FRONTEND_URL` = your frontend URL (e.g., `https://simon-game-frontend-xxx.onrender.com`)
+   - Click **Save Changes**
+3. Click **simon-game-frontend** → **Environment**
+   - Set `VITE_API_URL` = your backend URL
+   - Set `VITE_SOCKET_URL` = your backend URL
+   - Click **Save Changes**
 
 ---
 
-### 4.5 Test Online
+### 4.4 Test Online
 
 1. Open your **frontend URL** in browser
 2. Create a game
